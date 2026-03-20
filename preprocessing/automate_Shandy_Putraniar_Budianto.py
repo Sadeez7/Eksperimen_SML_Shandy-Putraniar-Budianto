@@ -31,7 +31,7 @@ def save_data(df, output_path):
 
 if __name__ == "__main__":
     # Path disesuaikan dengan asumsi script dijalankan dari root repository
-    INPUT_PATH = "churn_raw/churn.csv"
+    INPUT_PATH = "churn_raw/Churn_Modelling.csv"
     OUTPUT_PATH = "churn_preprocessing/churn_clean.csv"
 
     # Jalankan pipeline
