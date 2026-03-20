@@ -8,18 +8,22 @@ on:
       - 'churn_raw/**'
       - 'preprocessing/automate_*.py'
 
+# Menambahkan izin secara eksplisit agar bisa git push
+permissions:
+  contents: write
+
 jobs:
   build-and-preprocess:
     runs-on: ubuntu-latest
     
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4  # Di-update ke v4 biar ga ada warning
 
       - name: Set up Python 3.12.7
-        uses: actions/setup-python@v4
+        uses: actions/setup-python@v5 # Di-update ke v5
         with:
-          python-version: '3.12.7' # Sesuai rekomendasi Dicoding
+          python-version: '3.12.7'
 
       - name: Install dependencies
         run: |
@@ -27,15 +31,14 @@ jobs:
           pip install pandas scikit-learn
 
       - name: Run preprocessing script
-        # Ganti "NamaKamu" di bawah ini sesuai nama file aslinya
+        # PASTIKAN nama file di bawah ini SAMA PERSIS dengan yang ada di folder
         run: |
-          python preprocessing/automate_NamaKamu.py 
+          python preprocessing/automate_Sadeez.py 
 
       - name: Commit and push changes
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
           git add churn_preprocessing/
-          # Commit hanya jika ada perubahan
           git commit -m "Auto-preprocess data via GitHub Actions" -a || echo "No changes to commit"
           git push
