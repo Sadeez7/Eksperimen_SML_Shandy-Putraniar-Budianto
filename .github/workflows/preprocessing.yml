@@ -7,8 +7,8 @@ on:
     paths:
       - 'churn_raw/**'
       - 'preprocessing/automate_*.py'
+      - '.github/workflows/preprocessing.yml'
 
-# Menambahkan izin secara eksplisit agar bisa git push
 permissions:
   contents: write
 
@@ -18,10 +18,10 @@ jobs:
     
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v4  # Di-update ke v4 biar ga ada warning
+        uses: actions/checkout@v4
 
       - name: Set up Python 3.12.7
-        uses: actions/setup-python@v5 # Di-update ke v5
+        uses: actions/setup-python@v5
         with:
           python-version: '3.12.7'
 
@@ -31,7 +31,7 @@ jobs:
           pip install pandas scikit-learn
 
       - name: Run preprocessing script
-        # PASTIKAN nama file di bawah ini SAMA PERSIS dengan yang ada di folder
+        # Mengeksekusi file Python dengan nama yang sudah diperbarui
         run: |
           python preprocessing/automate_Shandy_Putraniar_Budianto.py 
 
