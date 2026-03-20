@@ -33,7 +33,7 @@ jobs:
       - name: Run preprocessing script
         # PASTIKAN nama file di bawah ini SAMA PERSIS dengan yang ada di folder
         run: |
-          python preprocessing/automate_Sadeez.py 
+          python preprocessing/automate_Shandy_Putraniar_Budianto.py 
 
       - name: Commit and push changes
         run: |
